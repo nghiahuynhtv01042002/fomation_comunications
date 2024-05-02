@@ -3,7 +3,6 @@ import time
 
 count = 0
 
-
 class odometry_server:
     def __init__(self, cmd, x, y, theta):
         self.cmd = cmd
@@ -16,7 +15,7 @@ class odometry_server:
         self.theta += 0
 
 # Sử dụng
-myServer = odometry_server("stp",0.0, 0.0, 0.0)
+myServer = odometry_server("stp",0.0, 0.0, 45.0)
 odom_string = "!cmd:{}#x{}:y:{}#theta:{}#\n".format(myServer.cmd,myServer.x,myServer.y,myServer.theta)
 print(odom_string)
 #create socket object
