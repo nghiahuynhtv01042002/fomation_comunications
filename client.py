@@ -3,10 +3,10 @@ import time
 import threading
 class odomerty_follower:
     def __init__(self, cmd, x, y, theta):
-        self.cmd_f = cmd
-        self.x_f = x
-        self.y_f = y
-        self.theta_f = theta
+        self.cmd_f_d = cmd
+        self.x_f_d = x
+        self.y_f_d = y
+        self.theta_f_d = theta
     
 
 def decoder_frame_data(data_received):
@@ -41,24 +41,7 @@ def recieve_data_from_server():
     global myclient
     global data_fag
     count = 0
-    while True:
-        # # enter message
-        # message = "I Am TXN\n"
-        # # send data to server
-        # client_socket.send(message.encode())
-        
-        # # receive data from server
-        # data = client_socket.recv(1024).decode()
-        # # print(f"Received from server: {data} {count}")
-        # print("Received from server: {} {}".format(data, count))
-        # count += 1
-        # time.sleep(2)
-
-        # # enter message
-        # message = "I Am TXN\n"
-        # # send data to server
-        # client_socket.send(message.encode())
-        
+    while True:        
         # receive data from server
         data = client_socket.recv(1024).decode()
         if not data: 
@@ -67,9 +50,9 @@ def recieve_data_from_server():
             break
         # print("Received from server: {} {}".format(data, count))
 
-        myclient.cmd_f,myclient.x_f,myclient.y_f,myclient.theta_f = decoder_frame_data(data)
-        odom_string_f = "cmd_f: {}\nx_f: {:.2f}\ny_f: {:.2f}\ntheta_f: {:.2f}".format(myclient.cmd_f,myclient.x_f,myclient.y_f,myclient.theta_f)
-        print(odom_string_f)
+        myclient.cmd_f_d,myclient.x_f_d,myclient.y_f_d,myclient.theta_f_d = decoder_frame_data(data)
+        odom_string_f_d = "cmd_fd: {}\nx_fd: {:.2f}\ny_fd: {:.2f}\ntheta_fd: {:.2f}".format(myclient.cmd_f_d,myclient.x_f_d,myclient.y_f_d,myclient.theta_f_d)
+        print(odom_string_f_d)
         count += 1
         #calculate PI here 
 
